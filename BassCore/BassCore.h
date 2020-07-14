@@ -1,7 +1,18 @@
 #pragma once
-#include "BassCommon.h"
-#include "BassMath.h"
-#include "BassTime.h"
-#include "BassSystem.h"
-
 #pragma comment(lib, "BassCore.lib")
+
+// Common
+#include "BassCommon.h"
+
+// Math
+#include "BassMath.h"
+
+
+// Time
+#include "TimeCommon.h"
+#include "Clock.h"
+#include "StopWatch.h"
+#include "Timer.h"
+
+
+

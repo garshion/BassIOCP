@@ -1,6 +1,11 @@
 #include "Timer.h"
 #include "BassCommon.h"
 
+
+// To do : 
+
+#ifdef WORKING
+
 Bass::Timer::Timer(bool bUseSystemClock)
 {
 	m_bUseSystemClock = bUseSystemClock;
@@ -16,7 +21,8 @@ Bass::Timer::~Timer()
 	_Release();
 }
 
-bool Bass::Timer::AddTimerEvent(OnTimerFunc pEvent, ETimerType type)
+//bool Bass::Timer::AddTimerEvent(OnTimerFunc pEvent, ETimerType type)
+bool Bass::Timer::AddTimerEvent(const std::function<void>& pEvent, const ETimerType& type)
 {
 	if (nullptr == pEvent)
 		return false;
@@ -29,16 +35,16 @@ bool Bass::Timer::AddTimerEvent(OnTimerFunc pEvent, ETimerType type)
 
 	switch (type)
 	{
-	case TIMER_TYPE_SECOND:
+	case ETimerType::ON_SECOND:
 		m_vecSec.push_back(pEvent);
 		break;
-	case TIMER_TYPE_MINUTE:
+	case ETimerType::ON_MINUTE:
 		m_vecMin.push_back(pEvent);
 		break;
-	case TIMER_TYPE_HOUR:
+	case ETimerType::ON_HOUR:
 		m_vecHour.push_back(pEvent);
 		break;
-	case TIMER_TYPE_DAY:
+	case ETimerType::ON_DAY:
 		m_vecDay.push_back(pEvent);
 		break;
 	default:
@@ -48,37 +54,6 @@ bool Bass::Timer::AddTimerEvent(OnTimerFunc pEvent, ETimerType type)
 	m_mapTimerEvent.insert(std::make_pair(pEvent, type));
 
 	return true;
-}
-
-void Bass::Timer::RemoveTimerEvent(OnTimerFunc pEvent)
-{
-	auto it = m_mapTimerEvent.find(pEvent);
-	if (m_mapTimerEvent.end() == it)
-		return;
-
-	vecOnTimer_t* pList = nullptr;
-	switch (it->second)
-	{
-	case TIMER_TYPE_SECOND: pList = &m_vecSec; break;
-	case TIMER_TYPE_MINUTE: pList = &m_vecMin; break;
-	case TIMER_TYPE_HOUR: pList = &m_vecHour; break;
-	case TIMER_TYPE_DAY: pList = &m_vecDay; break;
-	default:
-		return;
-	}
-
-	AutoLock(m_Lock);
-
-	for (auto itr = pList->begin(); itr != pList->end(); ++itr)
-	{
-		if (pEvent == *itr)
-		{
-			pList->erase(itr);
-			break;
-		}
-	}
-
-	m_mapTimerEvent.erase(it);
 }
 
 void Bass::Timer::_Process()
@@ -103,7 +78,7 @@ void Bass::Timer::_Process()
 	}
 }
 
-void Bass::Timer::_OnEvent(ETimerType type)
+void Bass::Timer::_OnEvent(const ETimerType& type)
 {
 	if (false == m_IsRunning)
 		return;
@@ -113,16 +88,16 @@ void Bass::Timer::_OnEvent(ETimerType type)
 
 	switch (type)
 	{
-	case TIMER_TYPE_SECOND:
+	case ETimerType::ON_SECOND:
 		pList = &m_vecSec;
 		break;
-	case TIMER_TYPE_MINUTE:
+	case ETimerType::ON_MINUTE:
 		pList = &m_vecMin;
 		break;
-	case TIMER_TYPE_HOUR:
+	case ETimerType::ON_HOUR:
 		pList = &m_vecHour;
 		break;
-	case TIMER_TYPE_DAY:
+	case ETimerType::ON_DAY:
 		pList = &m_vecDay;
 		break;
 	default:
@@ -133,29 +108,30 @@ void Bass::Timer::_OnEvent(ETimerType type)
 
 	for (auto func : *pList)
 	{
-		if (nullptr != func)
-			func();
+		func();
+		//if (nullptr != func)
+		//	func;
 	}
 }
 
 void Bass::Timer::_OnSecond()
 {
-	_OnEvent(TIMER_TYPE_SECOND);
+	_OnEvent(ETimerType::ON_SECOND);
 }
 
 void Bass::Timer::_OnMinute()
 {
-	_OnEvent(TIMER_TYPE_MINUTE);
+	_OnEvent(ETimerType::ON_MINUTE);
 }
 
 void Bass::Timer::_OnHour()
 {
-	_OnEvent(TIMER_TYPE_HOUR);
+	_OnEvent(ETimerType::ON_HOUR);
 }
 
 void Bass::Timer::_OnDay()
 {
-	_OnEvent(TIMER_TYPE_DAY);
+	_OnEvent(ETimerType::ON_DAY);
 }
 
 void Bass::Timer::_Initialize()
@@ -181,3 +157,6 @@ void Bass::Timer::_Release()
 	m_vecMin.clear();
 	m_vecDay.clear();
 }
+
+
+#endif

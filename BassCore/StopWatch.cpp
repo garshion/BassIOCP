@@ -1,56 +1,54 @@
 #include "StopWatch.h"
+#include "StopWatchImpl.hxx"
+#include "BassCommon.h"
 
 Bass::StopWatch::StopWatch()
 {
+	m_pImpl = new StopWatchImpl();
 }
 
 Bass::StopWatch::~StopWatch()
 {
+	SafeDelete(m_pImpl);
 }
 
 bool Bass::StopWatch::Start()
 {
-	if (true == m_setStart)
+	if (nullptr == m_pImpl)
 		return false;
-	m_StartTime = CurrentTime();
-	m_setStart = true;
-	m_setEnd = false;
-
-	return true;
+	return m_pImpl->Start();
 }
 
 bool Bass::StopWatch::Stop()
 {
-	if (false == m_setStart)
+	if (nullptr == m_pImpl)
 		return false;
-
-	m_EndTime = CurrentTime();
-	m_setEnd = true;
-	return true;
+	return m_pImpl->Stop();
 }
 
 void Bass::StopWatch::Reset()
 {
-	m_setStart = m_setEnd = false;
+	if (nullptr != m_pImpl)
+		m_pImpl->Reset();
 }
 
 double Bass::StopWatch::GetSeconds() const
 {
-	if (false == m_setEnd)
+	if (nullptr == m_pImpl)
 		return 0.0;
-
-	return sec_t(m_EndTime - m_StartTime).count();
+	return m_pImpl->GetSeconds();
 }
 
-long long Bass::StopWatch::GetMilliseconds() const
+int64_t Bass::StopWatch::GetMilliseconds() const
 {
-	return GetNanoseconds() / 1000;
-}
-
-long long Bass::StopWatch::GetNanoseconds() const
-{
-	if (false == m_setEnd)
+	if (nullptr == m_pImpl)
 		return 0;
+	return m_pImpl->GetMilliseconds();
+}
 
-	return ns_t(m_EndTime - m_StartTime).count();
+int64_t Bass::StopWatch::GetNanoseconds() const
+{
+	if (nullptr == m_pImpl)
+		return 0;
+	return m_pImpl->GetNanoseconds();
 }

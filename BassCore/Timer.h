@@ -4,19 +4,24 @@
 #include <vector>
 #include <unordered_map>
 #include <mutex>
+#include <functional>
+
+#ifdef WORKING
 
 namespace Bass
 {
-	typedef void(*OnTimerFunc)(void);	// Event 받을 함수 포인터. void Func(void) 형태만 받음.
-	typedef std::vector<OnTimerFunc> vecOnTimer_t;
+	//typedef void(*OnTimerFunc)(void);	// Event 받을 함수 포인터. void Func(void) 형태만 받음.
+	//typedef std::vector<OnTimerFunc> vecOnTimer_t;
 
-	enum ETimerType
-	{
-		TIMER_TYPE_SECOND,
-		TIMER_TYPE_MINUTE,
-		TIMER_TYPE_HOUR,
-		TIMER_TYPE_DAY,
-	};
+	using vecOnTimer_t = std::vector<std::function<void>>;
+
+	//enum class ETimerType : int
+	//{
+	//	ON_SECOND = 0,
+	//	ON_MINUTE,
+	//	ON_HOUR,
+	//	ON_DAY,
+	//};
 
 	class Timer
 	{
@@ -25,14 +30,16 @@ namespace Bass
 		Timer(bool bUseSystemClock = true);
 		~Timer();
 
-		bool AddTimerEvent(OnTimerFunc pEvent, ETimerType type);
-		void RemoveTimerEvent(OnTimerFunc pEvent);
+		bool AddTimerEvent(const std::function<void>& pEvent, const ETimerType& type);
+		bool RemoveTimerEvent(const std::function<void>& pEvent);
+		//bool AddTimerEvent(OnTimerFunc pEvent, ETimerType type);
+		//void RemoveTimerEvent(OnTimerFunc pEvent);
 
 	private:
 
 		void _Process();
 
-		void _OnEvent(ETimerType type);
+		void _OnEvent(const ETimerType& type);
 
 		void _OnSecond();
 		void _OnMinute();
@@ -56,7 +63,8 @@ namespace Bass
 		vecOnTimer_t m_vecHour;
 		vecOnTimer_t m_vecDay;
 
-		std::unordered_map<OnTimerFunc, ETimerType> m_mapTimerEvent;
+		//std::unordered_map<OnTimerFunc, ETimerType> m_mapTimerEvent;
+		std::unordered_map<std::function<void>, ETimerType> m_mapTimerEvent;
 
 
 		std::thread* m_pThread = nullptr;
@@ -64,3 +72,5 @@ namespace Bass
 	};
 
 }
+
+#endif

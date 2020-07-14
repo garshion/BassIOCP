@@ -1,9 +1,9 @@
 #pragma once
-
-#include "TimeCommon.h"
+#include <cstdint>
 
 namespace Bass
 {
+	class StopWatchImpl;
 	class StopWatch
 	{
 	public:
@@ -15,15 +15,12 @@ namespace Bass
 		void Reset();
 
 		double GetSeconds() const;
-		long long GetMilliseconds() const;
-		long long GetNanoseconds() const;
+		int64_t GetMilliseconds() const;
+		int64_t GetNanoseconds() const;
 
 	private:
-		timepoint_t m_StartTime;
-		timepoint_t m_EndTime;
+		StopWatchImpl* m_pImpl = nullptr;
 
-		bool m_setStart = false;
-		bool m_setEnd = false;
 	};
 
 }

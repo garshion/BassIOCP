@@ -1,4 +1,5 @@
 #pragma once
+
 namespace Bass
 {
 	template <class T>

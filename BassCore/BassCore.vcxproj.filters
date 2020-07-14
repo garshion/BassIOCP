@@ -25,6 +25,9 @@
     <Filter Include="Math\Unit">
       <UniqueIdentifier>{86840551-0f52-4313-adcf-cba7f3b05453}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Time\Pacade">
+      <UniqueIdentifier>{ef50f15c-af5b-4fab-9664-400e021dc236}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MathCommon.h">
@@ -50,9 +53,6 @@
       <Filter>Time</Filter>
     </ClInclude>
     <ClInclude Include="StopWatch.h">
-      <Filter>Time</Filter>
-    </ClInclude>
-    <ClInclude Include="BassTime.h">
       <Filter>Time</Filter>
     </ClInclude>
     <ClInclude Include="Matrix.h">
@@ -82,9 +82,6 @@
     <ClInclude Include="MemoryPool.h">
       <Filter>Memory</Filter>
     </ClInclude>
-    <ClInclude Include="BassSystem.h">
-      <Filter>System</Filter>
-    </ClInclude>
     <ClInclude Include="UnitCommon.h">
       <Filter>Math\Unit</Filter>
     </ClInclude>
@@ -94,16 +91,16 @@
     <ClInclude Include="Singleton.h">
       <Filter>System</Filter>
     </ClInclude>
+    <ClInclude Include="Clock.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="StopWatchImpl.hxx">
+      <Filter>Time\Pacade</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SystemInfoManager.cpp">
       <Filter>System</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Time</Filter>
-    </ClCompile>
-    <ClCompile Include="StopWatch.cpp">
-      <Filter>Time</Filter>
     </ClCompile>
     <ClCompile Include="Matrix.cpp">
       <Filter>Math\Linear</Filter>
@@ -128,6 +125,18 @@
     </ClCompile>
     <ClCompile Include="MathCommon.cpp">
       <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Clock.cpp">
+      <Filter>Time\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatchImpl.cpp">
+      <Filter>Time\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatch.cpp">
+      <Filter>Time\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Time\Pacade</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
