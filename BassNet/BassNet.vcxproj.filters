@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Client">
+      <UniqueIdentifier>{0cfda01b-2bdb-4874-8daa-bc45f554f1d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{1367afdf-463b-4e09-9c0f-028f23b25ffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server">
+      <UniqueIdentifier>{d295f940-404b-48a0-b2fd-608f07856558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Pacade">
+      <UniqueIdentifier>{d14aa6f0-0880-4c45-85ee-2f779036d347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Pacade">
+      <UniqueIdentifier>{b5084466-efab-4b80-9e1d-075288d49a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Client\Pacade">
+      <UniqueIdentifier>{3d82069c-7a37-4b4a-88e3-47369cc29f10}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IOCPImpl.cpp">
+      <Filter>Server\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="IOCPSocket.cpp">
+      <Filter>Server\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="IOCP.cpp">
+      <Filter>Server\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="Overlapped.cpp">
+      <Filter>Server\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPServerImpl.cpp">
+      <Filter>Server\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPServer.cpp">
+      <Filter>Server\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketResolver.cpp">
+      <Filter>Common\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkCore.cpp">
+      <Filter>Common\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSocketImpl.cpp">
+      <Filter>Client\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSocket.cpp">
+      <Filter>Client\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPSenderImpl.cpp">
+      <Filter>Client\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPSender.cpp">
+      <Filter>Client\Pacade</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NetworkCore.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkCommon.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="BassNet.h" />
+    <ClInclude Include="IOCP.h">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPImpl.hxx">
+      <Filter>Server\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPServerImpl.hxx">
+      <Filter>Server\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPServer.h">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Overlapped.hxx">
+      <Filter>Server\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPSocket.hxx">
+      <Filter>Server\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketResolver.hxx">
+      <Filter>Common\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSocketImpl.hxx">
+      <Filter>Client\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSocket.h">
+      <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPSenderImpl.hxx">
+      <Filter>Client\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPSender.h">
+      <Filter>Client</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

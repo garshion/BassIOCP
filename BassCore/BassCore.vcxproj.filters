@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Math">
+      <UniqueIdentifier>{0460b3e2-0138-4dd3-89fd-e5da2edfab73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{fe0594e1-8a6e-4d8b-a99c-4267923787e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{729ac7c6-1c49-48af-b093-886fad773ab0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{9ed4c488-f5c2-4e04-a703-a1f51a66a66f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time">
+      <UniqueIdentifier>{c547d1b2-03d6-46cd-ab23-d5bc047da177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Linear">
+      <UniqueIdentifier>{d3d2c35c-9d29-4796-b8ff-daace8058f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Geometry2D">
+      <UniqueIdentifier>{c3744080-43d8-418a-abd9-12e41ba3ded2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Unit">
+      <UniqueIdentifier>{86840551-0f52-4313-adcf-cba7f3b05453}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MathCommon.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="BassMath.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="BassCore.h" />
+    <ClInclude Include="MTQueue.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemInfoManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="BassCommon.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeCommon.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="StopWatch.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="BassTime.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Math\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec3.h">
+      <Filter>Math\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Math\Geometry2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Math\Geometry2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Math\Geometry2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>Math\Geometry2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Polygon.h">
+      <Filter>Math\Geometry2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="BassSystem.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitCommon.h">
+      <Filter>Math\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="ELineCross.h">
+      <Filter>Math\Geometry2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SystemInfoManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Time</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatch.cpp">
+      <Filter>Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Math\Linear</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec3.cpp">
+      <Filter>Math\Linear</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Math\Geometry2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Math\Geometry2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Math\Geometry2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>Math\Geometry2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="MathCommon.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
