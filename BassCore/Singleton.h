@@ -15,6 +15,7 @@ namespace Bass
 		static T m_Instance;
 	};
 }
+
 template <class T>
 T Bass::Singleton<T>::m_Instance;
 

@@ -26,22 +26,22 @@ bool Bass::IsZero(const float& val, const float& tol) noexcept
 
 double Bass::RadianToDegree(const double& rad)
 {
-	return rad * PI_DEGREE / PI;
+	return rad * PI_DEGREE * DIV_PI;
 }
 
 double Bass::DegreeToRadian(const double& deg)
 {
-	return deg * PI / PI_DEGREE;
+	return deg * PI * DIV_PI_DEGREE;
 }
 
 float Bass::RadianToDegree(const float& rad)
 {
-	return rad * PI_DEGREE_32 / PI_32;
+	return rad * PI_DEGREE_32 * DIV_PI_32;
 }
 
 float Bass::DegreeToRadian(const float& deg)
 {
-	return deg * PI_32 / PI_DEGREE_32;
+	return deg * PI_32 * DIV_PI_DEGREE_32;
 }
 
 double Bass::DegreeNormalize(const double& deg)

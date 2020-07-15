@@ -1,5 +1,4 @@
 #include "StopWatchImpl.hxx"
-#include <chrono>
 
 Bass::StopWatchImpl::StopWatchImpl()
 {

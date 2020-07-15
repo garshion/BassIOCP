@@ -1,9 +1,8 @@
 #pragma once
-#include "TimeCommon.h"
+#include <chrono>
 
 namespace Bass
 {
-
 	class StopWatchImpl
 	{
 	public:
@@ -19,8 +18,8 @@ namespace Bass
 		long long GetNanoseconds() const;
 
 	private:
-		timepoint_t m_StartTime;
-		timepoint_t m_EndTime;
+		std::chrono::system_clock::time_point m_StartTime;
+		std::chrono::system_clock::time_point m_EndTime;
 
 		bool m_setStart = false;
 		bool m_setEnd = false;

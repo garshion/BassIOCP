@@ -1,5 +1,11 @@
 #pragma once
 
+
+/// <summary>
+/// Timer 구현 할 때 사용할 계획...
+/// 사용하지 않을 경우 삭제예정!
+/// </summary>
+
 namespace Bass
 {
 	constexpr int DAY_PER_SECONDS = 86400;

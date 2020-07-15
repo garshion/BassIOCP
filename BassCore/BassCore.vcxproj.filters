@@ -28,12 +28,15 @@
     <Filter Include="Time\Pacade">
       <UniqueIdentifier>{ef50f15c-af5b-4fab-9664-400e021dc236}</UniqueIdentifier>
     </Filter>
+    <Filter Include="String">
+      <UniqueIdentifier>{e2828a6f-5a3e-44fc-bdbd-58703be20a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{55303513-f1d8-4d19-83cd-611586b0a1b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MathCommon.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="BassMath.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="BassCore.h" />
@@ -45,9 +48,6 @@
     </ClInclude>
     <ClInclude Include="BassCommon.h">
       <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Time</Filter>
     </ClInclude>
     <ClInclude Include="TimeCommon.h">
       <Filter>Time</Filter>
@@ -97,6 +97,9 @@
     <ClInclude Include="StopWatchImpl.hxx">
       <Filter>Time\Pacade</Filter>
     </ClInclude>
+    <ClInclude Include="StringUtil.h">
+      <Filter>String</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SystemInfoManager.cpp">
@@ -135,8 +138,8 @@
     <ClCompile Include="StopWatch.cpp">
       <Filter>Time\Pacade</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Time\Pacade</Filter>
+    <ClCompile Include="StringUtil.cpp">
+      <Filter>String</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

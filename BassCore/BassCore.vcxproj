@@ -204,7 +204,6 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
   <ItemGroup>
     <ClInclude Include="BassCommon.h" />
     <ClInclude Include="BassCore.h" />
-    <ClInclude Include="BassMath.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Clock.h" />
@@ -217,12 +216,12 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="StopWatchImpl.hxx" />
+    <ClInclude Include="StringUtil.h" />
     <ClInclude Include="TimeCommon.h" />
     <ClInclude Include="MathCommon.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MTQueue.h" />
     <ClInclude Include="SystemInfoManager.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="UnitCommon.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
@@ -237,8 +236,8 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="StopWatch.cpp" />
     <ClCompile Include="StopWatchImpl.cpp" />
+    <ClCompile Include="StringUtil.cpp" />
     <ClCompile Include="SystemInfoManager.cpp" />
-    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vec3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
