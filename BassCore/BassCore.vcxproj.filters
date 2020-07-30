@@ -43,9 +43,6 @@
     <ClInclude Include="MTQueue.h">
       <Filter>Memory</Filter>
     </ClInclude>
-    <ClInclude Include="SystemInfoManager.h">
-      <Filter>System</Filter>
-    </ClInclude>
     <ClInclude Include="BassCommon.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -85,9 +82,6 @@
     <ClInclude Include="UnitCommon.h">
       <Filter>Math\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>System</Filter>
-    </ClInclude>
     <ClInclude Include="Clock.h">
       <Filter>Time</Filter>
     </ClInclude>
@@ -100,11 +94,11 @@
     <ClInclude Include="LogManager.h">
       <Filter>Log</Filter>
     </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SystemInfoManager.cpp">
-      <Filter>System</Filter>
-    </ClCompile>
     <ClCompile Include="Matrix.cpp">
       <Filter>Math\Linear</Filter>
     </ClCompile>

@@ -1,6 +1,5 @@
 #include "IOCPImpl.hxx"
 #include "IOCPSocket.hxx"
-#include "SystemInfoManager.h"
 #include "Overlapped.hxx"
 
 void Bass::CIOCPImpl::_CreateSession()
@@ -366,7 +365,8 @@ bool Bass::CIOCPImpl::Create(int nPort, const std::string & strLocalIP, const si
 
 	_CreateSession();
 
-	m_nWorkerCount = m_IsMinimal ? 1 : SystemInfoManager::GetInstance().GetProcessorCount();
+	//m_nWorkerCount = m_IsMinimal ? 1 : SystemInfoManager::GetInstance().GetProcessorCount();
+	m_nWorkerCount = m_IsMinimal ? 1 : 4;	// 임시 처리.
 	m_nWriterCount = m_IsMinimal ? 1 : SIZE_IOCP_WRITER_THREAD;
 
 	m_hCompletionPort = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, (DWORD)m_nWorkerCount);
