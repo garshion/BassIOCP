@@ -8,8 +8,8 @@ namespace Bass
 	{
 	public:
 		Circle();
-		Circle(const Vec3& vPos, const float& radius);
-		Circle(const float& x, const float& y, const float& radius);
+		Circle(const Vec3& vPos, const double& radius);
+		Circle(const double& x, const double& y, const double& radius);
 		virtual ~Circle();
 
 		virtual bool IsPointInShape(const Vec3& vPos);
@@ -19,7 +19,7 @@ namespace Bass
 
 	private:
 		Vec3 m_vPos;
-		float m_fRadius = 0.0f;
+		double m_fRadius = 0.0f;
 	};
 
 }

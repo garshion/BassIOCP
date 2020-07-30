@@ -8,7 +8,7 @@ Bass::Box::Box()
 	m_vMin.Set(DEFAULT_INFINITY, DEFAULT_INFINITY);
 }
 
-Bass::Box::Box(const float & left, const float & right, const float & top, const float & bottom)
+Bass::Box::Box(const double& left, const double& right, const double& top, const double& bottom)
 {
 	Vec3 vPos;
 	vPos.Set(left, top);

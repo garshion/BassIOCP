@@ -7,13 +7,13 @@ Bass::Circle::Circle()
 {
 }
 
-Bass::Circle::Circle(const Vec3 & vPos, const float & radius)
+Bass::Circle::Circle(const Vec3 & vPos, const double& radius)
 {
 	m_vPos = vPos;
 	m_fRadius = radius;
 }
 
-Bass::Circle::Circle(const float & x, const float & y, const float & radius)
+Bass::Circle::Circle(const double& x, const double& y, const double& radius)
 {
 	m_vPos.Set(x, y);
 	m_fRadius = radius;

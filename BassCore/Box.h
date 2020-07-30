@@ -6,7 +6,7 @@ namespace Bass
 	{
 	public:
 		Box();
-		Box(const float& left, const float& right, const float& top, const float& bottom);
+		Box(const double& left, const double& right, const double& top, const double& bottom);
 		virtual ~Box();
 
 		virtual bool IsPointInShape(const Vec3& vPos) const;
