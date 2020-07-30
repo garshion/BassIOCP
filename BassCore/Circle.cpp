@@ -1,4 +1,7 @@
 #include "Circle.h"
+#include "Matrix.h"
+#include "MathCommon.h"
+
 
 Bass::Circle::Circle()
 {

@@ -207,9 +207,9 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
     <ClInclude Include="Box.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Clock.h" />
-    <ClInclude Include="ELineCross.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="LogManager.h" />
     <ClInclude Include="MemoryPool.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="Shape.h" />
@@ -231,6 +231,7 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="MathCommon.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Polygon.cpp" />

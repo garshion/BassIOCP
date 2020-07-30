@@ -1,5 +1,7 @@
 #include "Polygon.h"
 #include "Line.h"
+#include "Matrix.h"
+#include "MathCommon.h"
 
 Bass::Polygon::Polygon()
 {
@@ -89,17 +91,14 @@ Bass::Vec3 Bass::Polygon::GetCenter() const
 	if (true == m_vecPoints.empty())
 		return vRet;
 
-	double dX = 0.0;
-	double dY = 0.0;
-
 	for (auto& vPos : m_vecPoints)
 	{
-		dX += vPos.x;
-		dY += vPos.y;
+		vRet.x += vPos.x;
+		vRet.y += vPos.y;
 	}
 
-	dX /= m_vecPoints.size();
-	dY /= m_vecPoints.size();
+	vRet.x /= m_vecPoints.size();
+	vRet.y /= m_vecPoints.size();
 
-	return Vec3((float)dX, (float)dY);
+	return vRet;
 }

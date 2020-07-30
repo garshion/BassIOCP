@@ -1,5 +1,6 @@
 #include "Matrix.h"
-#include <math.h>
+#include <cmath>
+#include <string>
 
 
 Bass::Matrix::Matrix()

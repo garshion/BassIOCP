@@ -1,10 +1,9 @@
 #pragma once
 #include "Vec3.h"
-#include "Matrix.h"
-#include "MathCommon.h"
 
 namespace Bass
 {
+	class Matrix;
 	class Shape
 	{
 	public:

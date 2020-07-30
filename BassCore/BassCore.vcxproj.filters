@@ -85,9 +85,6 @@
     <ClInclude Include="UnitCommon.h">
       <Filter>Math\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="ELineCross.h">
-      <Filter>Math\Geometry2D</Filter>
-    </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>System</Filter>
     </ClInclude>
@@ -99,6 +96,9 @@
     </ClInclude>
     <ClInclude Include="StringUtil.h">
       <Filter>String</Filter>
+    </ClInclude>
+    <ClInclude Include="LogManager.h">
+      <Filter>Log</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +140,9 @@
     </ClCompile>
     <ClCompile Include="StringUtil.cpp">
       <Filter>String</Filter>
+    </ClCompile>
+    <ClCompile Include="LogManager.cpp">
+      <Filter>Log</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
