@@ -16,11 +16,11 @@ namespace Bass
 		std::string ToMBS(const std::wstring& str);
 		std::wstring ToWCS(const std::string& str);
 
-		std::string ToUTF8(const std::string& str);
-		std::string ToUTF8(const std::wstring& str);
+		//std::string ToUTF8(const std::string& str);
+		//std::string ToUTF8(const std::wstring& str);
 
-		std::wstring UTF8ToWCS(const std::string& str);
-		std::string UTF8ToMBS(const std::string& str);
+		//std::wstring UTF8ToWCS(const std::string& str);
+		//std::string UTF8ToMBS(const std::string& str);
 
 	};
 
