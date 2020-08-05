@@ -7,14 +7,15 @@ namespace Bass
 {
 	class StringUtil
 	{
-		std::string ToLower(const std::string& str);
-		std::wstring ToLower(const std::wstring& str);
+	public:
+		static std::string ToLower(const std::string& str);
+		static std::wstring ToLower(const std::wstring& str);
 
-		std::string ToUpper(const std::string& str);
-		std::wstring ToUpper(const std::wstring& str);
+		static std::string ToUpper(const std::string& str);
+		static std::wstring ToUpper(const std::wstring& str);
 
-		std::string ToMBS(const std::wstring& str);
-		std::wstring ToWCS(const std::string& str);
+		static std::string ToMBS(const std::wstring& str);
+		static std::wstring ToWCS(const std::string& str);
 
 		//std::string ToUTF8(const std::string& str);
 		//std::string ToUTF8(const std::wstring& str);
