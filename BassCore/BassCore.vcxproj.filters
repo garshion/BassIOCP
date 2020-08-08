@@ -73,9 +73,6 @@
     <ClInclude Include="Polygon.h">
       <Filter>Math\Geometry2D</Filter>
     </ClInclude>
-    <ClInclude Include="Logger.h">
-      <Filter>System</Filter>
-    </ClInclude>
     <ClInclude Include="MemoryPool.h">
       <Filter>Memory</Filter>
     </ClInclude>
@@ -122,9 +119,6 @@
     </ClCompile>
     <ClCompile Include="Polygon.cpp">
       <Filter>Math\Geometry2D</Filter>
-    </ClCompile>
-    <ClCompile Include="Logger.cpp">
-      <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="MathCommon.cpp">
       <Filter>Math</Filter>
