@@ -99,7 +99,7 @@ void Bass::LogManager::Error(const wchar_t* format, ...)
 	m_pLogManager->Log(pBuffer, ELogLevel::Error);
 }
 
-void Bass::LogManager::Debug(const wchar_t* format, ...)
+void Bass::LogManager::Debug([[maybe_unused]] const wchar_t* format, ...)
 {
 #ifdef _DEBUG
 	if (nullptr == m_pLogManager)

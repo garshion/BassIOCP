@@ -41,16 +41,9 @@ namespace Bass
 		const wchar_t* _GetLogTypeString(const ELogLevel& level) const;
 
 	public:
-		const ELogLevel& LogLevel		= m_LogLevel;
-		//const time_t& LogTime			= m_LogTime;
-		const std::chrono::system_clock::time_point& LogTime = m_LogTime;
-		const std::wstring& LogString	= m_strLogString;
-
-	private:
-		ELogLevel	m_LogLevel = ELogLevel::None;
-		//time_t		m_LogTime = 0;
-		std::chrono::system_clock::time_point m_LogTime;
-		std::wstring m_strLogString = L"";
+		ELogLevel	LogLevel = ELogLevel::None;
+		std::chrono::system_clock::time_point LogTime;
+		std::wstring LogString = L"";
 	};
 
 }

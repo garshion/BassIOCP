@@ -75,7 +75,7 @@ namespace Bass
 	template<class T>
 	bool Bass::MTQueue<T>::MoveAll(std::queue<T>& o_queue)
 	{
-		while (false == m_queue.empty())
+		while (false == o_queue.empty())
 			o_queue.pop();
 
 		std::lock_guard<std::mutex> smartlock(m_lock);

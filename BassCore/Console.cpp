@@ -2,10 +2,10 @@
 #include <Windows.h>
 #include <string>
 
-void Bass::Console::ChangeConsoleColor(const EConsoleColor& textColor, const EConsoleColor& backColor)
+void Bass::Console::ChangeConsoleColor(const EConsoleColor& textColor, [[maybe_unused]] const EConsoleColor& backColor)
 {
 	WORD color = (WORD)textColor + (WORD)backColor;
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)color);
 }
 
 void Bass::Console::SetTitle(const char* strTitle)

@@ -19,8 +19,8 @@ Bass::LogData::LogData(const ELogLevel& logLevel, const std::string& strLog)
 
 void Bass::LogData::SetData(const ELogLevel& logLevel, const std::wstring& strLog)
 {
-	m_LogLevel = logLevel;
-	m_strLogString.assign(strLog.begin(), strLog.end());
+	LogLevel = logLevel;
+	LogString.assign(strLog.begin(), strLog.end());
 	SetTime();
 }
 
@@ -31,13 +31,13 @@ void Bass::LogData::SetData(const ELogLevel& logLevel, const std::string& strLog
 
 void Bass::LogData::SetTime()
 {
-	m_LogTime = std::chrono::system_clock::now();
+	LogTime = std::chrono::system_clock::now();
 }
 
 std::wstring Bass::LogData::ToString()
 {
 	std::tm timeData;
-	time_t logTime = std::chrono::system_clock::to_time_t(m_LogTime);
+	time_t logTime = std::chrono::system_clock::to_time_t(LogTime);
 	if (0 != localtime_s(&timeData, &logTime))
 		return L"Time Error!!";
 
@@ -45,14 +45,14 @@ std::wstring Bass::LogData::ToString()
 	size_t nOffset = wcsftime(strTemp, _countof(strTemp), L"[%Y-%m-%d %H:%M:%S", &timeData);
 
 	// 이제  ms 처리...
-	int nMS = (int)(std::chrono::duration_cast<std::chrono::milliseconds>(m_LogTime.time_since_epoch()).count() % 1000);
+	int nMS = (int)(std::chrono::duration_cast<std::chrono::milliseconds>(LogTime.time_since_epoch()).count() % 1000);
 	swprintf_s(strTemp + nOffset, 50 - nOffset, L".%03d]", nMS);
 
 	std::wstring strRet(strTemp);
 	strRet.append(L" ");
-	strRet.append(_GetLogTypeString(m_LogLevel));
+	strRet.append(_GetLogTypeString(LogLevel));
 	strRet.append(L" ");
-	strRet.append(m_strLogString);
+	strRet.append(LogString);
 
 	return strRet;
 }

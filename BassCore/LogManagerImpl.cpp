@@ -137,7 +137,7 @@ void Bass::LogManagerImpl::_Run()
 		if (false == logList.empty())
 		{
 			std::wstring strLogFile = m_LogFilePath.wstring();
-			std::ofstream fsLog(strLogFile.c_str(), std::ios::app);
+			std::wofstream fsLog(strLogFile.c_str(), std::ios::app);
 
 			while (false == logList.empty())
 			{
@@ -148,8 +148,16 @@ void Bass::LogManagerImpl::_Run()
 				_ChangeConsoleColor(data.LogLevel);
 				std::wcout << data.ToString().c_str() << std::endl;
 
+				if (true == _CheckFileChangable())
+				{
+					fsLog.close();
+					_ChangeAndClearFile();
+					fsLog.open(strLogFile.c_str(), std::ios::app);
+				}
 				logList.pop();
 			}
+
+			fsLog.close();
 
 			Console::ChangeConsoleColor();
 			if (true == _CheckFileChangable())
@@ -171,7 +179,7 @@ void Bass::LogManagerImpl::_ChangeConsoleColor(const ELogLevel& level)
 		Console::ChangeConsoleColor(EConsoleColor::Yellow);
 		break;
 	case ELogLevel::Error:
-		Console::ChangeConsoleColor(EConsoleColor::Red);
+		Console::ChangeConsoleColor(EConsoleColor::LightRed);
 		break;
 	case ELogLevel::Debug:
 		Console::ChangeConsoleColor(EConsoleColor::LightCyan);

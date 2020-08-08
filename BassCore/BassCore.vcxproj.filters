@@ -22,9 +22,6 @@
     <Filter Include="Math\Geometry2D">
       <UniqueIdentifier>{c3744080-43d8-418a-abd9-12e41ba3ded2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Math\Unit">
-      <UniqueIdentifier>{86840551-0f52-4313-adcf-cba7f3b05453}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Time\Pacade">
       <UniqueIdentifier>{ef50f15c-af5b-4fab-9664-400e021dc236}</UniqueIdentifier>
     </Filter>
@@ -81,9 +78,6 @@
     </ClInclude>
     <ClInclude Include="MemoryPool.h">
       <Filter>Memory</Filter>
-    </ClInclude>
-    <ClInclude Include="UnitCommon.h">
-      <Filter>Math\Unit</Filter>
     </ClInclude>
     <ClInclude Include="Clock.h">
       <Filter>Time</Filter>

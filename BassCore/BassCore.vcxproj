@@ -224,7 +224,6 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
     <ClInclude Include="MathCommon.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MTQueue.h" />
-    <ClInclude Include="UnitCommon.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <ItemGroup>
