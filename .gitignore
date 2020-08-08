@@ -4,3 +4,4 @@
 
 /.vs
 /BassNet/x64/Debug
+*.user
