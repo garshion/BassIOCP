@@ -1,7 +1,6 @@
 #include "LogManagerImpl.hxx"
 #include "BassCommon.h"
 #include <thread>
-#include <filesystem>
 #include "Console.h"
 #include <fstream>
 #include <iostream>
@@ -14,26 +13,32 @@ Bass::LogManagerImpl::~LogManagerImpl()
 {
 }
 
+void Bass::LogManagerImpl::SetPath(const std::wstring& strDir, const std::wstring& strFileName)
+{
+	if (false == strDir.empty())
+		m_LogDirPath.assign(strDir);
+
+	if (true == strFileName.empty())
+		return;
+
+	m_LogFilePath = m_LogDirPath.c_str();
+	m_LogFilePath.append(strFileName);
+}
+
 void Bass::LogManagerImpl::SetLogPath(const std::wstring& strLogPath)
 {
 	if (true == strLogPath.empty())
 		return;
-	m_strLogPath.assign(strLogPath.begin(), strLogPath.end());
+	m_LogDirPath.assign(strLogPath);
 }
 
 void Bass::LogManagerImpl::SetLogFileName(const std::wstring& strLogFileName)
 {
 	if (true == strLogFileName.empty())
 		return;
-	m_strLogFileName.assign(strLogFileName.begin(), strLogFileName.end());
+	m_LogFilePath = m_LogDirPath.c_str();
+	m_LogFilePath.append(strLogFileName);
 }
-
-//void Bass::LogManagerImpl::SetLogPoolSize(const size_t& nLogPoolSize)
-//{
-//	if (nLogPoolSize == 0)
-//		return;
-//	m_nLogPoolSize = nLogPoolSize;
-//}
 
 void Bass::LogManagerImpl::SetLogWriteTickDelayMS(const int& nLogTickMS)
 {
@@ -56,6 +61,8 @@ void Bass::LogManagerImpl::Start()
 	if (nullptr != m_pThread)
 		return;
 
+	_MakeFolder();
+	_ChangeAndClearFile();
 
 	m_bRunning.store(true);
 	m_pThread = new std::thread(&Bass::LogManagerImpl::_Run, this);
@@ -67,30 +74,52 @@ void Bass::LogManagerImpl::Stop()
 	m_bRunning.store(false);
 }
 
+void Bass::LogManagerImpl::Log(const std::wstring& log, const ELogLevel& level)
+{
+	m_LogQueue.Push(LogData(level, log));
+}
+
 void Bass::LogManagerImpl::_MakeFolder()
 {
-	std::filesystem::path checkFolder(m_strLogPath);
-	if (true == std::filesystem::exists(checkFolder))
+	if (true == std::filesystem::exists(m_LogDirPath))
 	{
-		if (true == std::filesystem::is_directory(checkFolder))
+		if (true == std::filesystem::is_directory(m_LogDirPath))
 			return;
 	}
 
 	std::error_code ec;
-	if (false == std::filesystem::create_directories(m_strLogPath, ec))
+	if (false == std::filesystem::create_directories(m_LogDirPath, ec))
 	{
 		// error occures
-		
+
 	}
 
 }
 
+bool Bass::LogManagerImpl::_CheckFileChangable()
+{
+	if (false == std::filesystem::exists(m_LogFilePath))
+		return false;
+
+	auto nSize = std::filesystem::file_size(m_LogFilePath);
+	if (nSize > m_nMaxLogFileSize)
+		return true;
+	return false;
+}
+
 void Bass::LogManagerImpl::_ChangeAndClearFile()
 {
+	if (false == std::filesystem::exists(m_LogFilePath))
+		return;
 
+	auto nTick = std::chrono::system_clock::now().time_since_epoch().count();
+	std::wstring strNewExt(L".");
+	strNewExt.append(std::to_wstring(nTick));
 
+	std::filesystem::path renamePath(m_LogFilePath);
+	renamePath.replace_extension(strNewExt);
 
-
+	std::filesystem::rename(m_LogFilePath, renamePath);
 }
 
 void Bass::LogManagerImpl::_Run()
@@ -107,7 +136,7 @@ void Bass::LogManagerImpl::_Run()
 
 		if (false == logList.empty())
 		{
-			std::wstring strLogFile = m_strLogPath + L"/" + m_strLogFileName;
+			std::wstring strLogFile = m_LogFilePath.wstring();
 			std::ofstream fsLog(strLogFile.c_str(), std::ios::app);
 
 			while (false == logList.empty())
@@ -118,10 +147,13 @@ void Bass::LogManagerImpl::_Run()
 
 				_ChangeConsoleColor(data.LogLevel);
 				std::wcout << data.ToString().c_str() << std::endl;
+
+				logList.pop();
 			}
 
 			Console::ChangeConsoleColor();
-			_ChangeAndClearFile();
+			if (true == _CheckFileChangable())
+				_ChangeAndClearFile();
 		}
 
 		untilTime += std::chrono::milliseconds(m_nLogWriteTickDelayMS);
