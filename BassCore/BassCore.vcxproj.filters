@@ -34,6 +34,9 @@
     <Filter Include="Log">
       <UniqueIdentifier>{55303513-f1d8-4d19-83cd-611586b0a1b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Log\Pacade">
+      <UniqueIdentifier>{8478c053-19f9-4459-8ba3-eec586777414}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MathCommon.h">
@@ -97,6 +100,15 @@
     <ClInclude Include="Singleton.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="LogManagerImpl.hxx">
+      <Filter>Log\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="LogData.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Matrix.cpp">
@@ -136,7 +148,16 @@
       <Filter>String</Filter>
     </ClCompile>
     <ClCompile Include="LogManager.cpp">
-      <Filter>Log</Filter>
+      <Filter>Log\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="LogData.cpp">
+      <Filter>Log\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="LogManagerImpl.cpp">
+      <Filter>Log\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
