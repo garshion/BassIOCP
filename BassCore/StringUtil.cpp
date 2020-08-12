@@ -2,14 +2,6 @@
 #include "BassCommon.h"
 #include <algorithm>
 #include <locale>
-
-#ifdef _WIN32
-#	ifndef _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
-#		define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
-#	endif
-#endif
-
-
 #include <codecvt>
 
 std::string Bass::StringUtil::ToLower(const std::string& str)
@@ -71,24 +63,29 @@ std::wstring Bass::StringUtil::ToWCS(const std::string& str)
 	return strRet;
 }
 
-//std::string Bass::StringUtil::ToUTF8(const std::string& str)
-//{
-//	return ToUTF8(ToWCS(str));
-//}
-//
-//std::string Bass::StringUtil::ToUTF8(const std::wstring& str)
-//{
-//	std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> convertor;
-//	return convertor.to_bytes(str.c_str());
-//}
-//
-//std::wstring Bass::StringUtil::UTF8ToWCS(const std::string& str)
-//{
-//	std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> convertor;
-//	return convertor.from_bytes(str.c_str());
-//}
-//
-//std::string Bass::StringUtil::UTF8ToMBS(const std::string& str)
-//{
-//	return ToMBS(UTF8ToWCS(str));
-//}
+
+#ifdef _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
+
+std::string Bass::StringUtil::ToUTF8(const std::string& str)
+{
+	return ToUTF8(ToWCS(str));
+}
+
+std::string Bass::StringUtil::ToUTF8(const std::wstring& str)
+{
+	std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> convertor;
+	return convertor.to_bytes(str.c_str());
+}
+
+std::wstring Bass::StringUtil::UTF8ToWCS(const std::string& str)
+{
+	std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> convertor;
+	return convertor.from_bytes(str.c_str());
+}
+
+std::string Bass::StringUtil::UTF8ToMBS(const std::string& str)
+{
+	return ToMBS(UTF8ToWCS(str));
+}
+
+#endif
