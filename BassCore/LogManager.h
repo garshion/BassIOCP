@@ -35,6 +35,8 @@ namespace Bass
 		void Console(const wchar_t* format, ...);
 		void System(const wchar_t* format, ...);
 
+		void ShowConsole(const bool& bShow);
+
 	private:
 		LogManagerImpl* m_pLogManager = nullptr;
 	};

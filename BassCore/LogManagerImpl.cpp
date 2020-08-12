@@ -79,6 +79,11 @@ void Bass::LogManagerImpl::Log(const std::wstring& log, const ELogLevel& level)
 	m_LogQueue.Push(LogData(level, log));
 }
 
+void Bass::LogManagerImpl::ShowConsole(const bool& bShow)
+{
+	m_bShowConsole.store(bShow);
+}
+
 void Bass::LogManagerImpl::_MakeFolder()
 {
 	if (true == std::filesystem::exists(m_LogDirPath))
@@ -145,8 +150,11 @@ void Bass::LogManagerImpl::_Run()
 				if (true == _IsWriteType(data.LogLevel))
 					fsLog << data.ToString().c_str() << std::endl;
 
-				_ChangeConsoleColor(data.LogLevel);
-				std::wcout << data.ToString().c_str() << std::endl;
+				if (true == m_bShowConsole.load())
+				{
+					_ChangeConsoleColor(data.LogLevel);
+					std::wcout << data.ToString().c_str() << std::endl;
+				}
 
 				if (true == _CheckFileChangable())
 				{

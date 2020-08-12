@@ -35,6 +35,7 @@ namespace Bass
 		// Write
 		void Log(const std::wstring& log, const ELogLevel& level);
 
+		void ShowConsole(const bool& bShow);
 
 	private:
 		void _MakeFolder();				// 로그 폴더 생성
@@ -56,6 +57,7 @@ namespace Bass
 
 		MTQueue<LogData> m_LogQueue;
 
+		std::atomic_bool m_bShowConsole = true;
 		std::atomic_bool m_bRunning = false;
 		std::thread* m_pThread = nullptr;
 

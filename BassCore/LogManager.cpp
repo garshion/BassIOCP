@@ -142,3 +142,9 @@ void Bass::LogManager::System(const wchar_t* format, ...)
 
 	m_pLogManager->Log(pBuffer, ELogLevel::System);
 }
+
+void Bass::LogManager::ShowConsole(const bool& bShow)
+{
+	if (nullptr != m_pLogManager)
+		m_pLogManager->ShowConsole(bShow);
+}
