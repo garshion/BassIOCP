@@ -100,6 +100,12 @@
     <ClInclude Include="Console.h">
       <Filter>System</Filter>
     </ClInclude>
+    <ClInclude Include="TimerImpl.hxx">
+      <Filter>Time\Pacade</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Matrix.cpp">
@@ -146,6 +152,12 @@
     </ClCompile>
     <ClCompile Include="Console.cpp">
       <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerImpl.cpp">
+      <Filter>Time\Pacade</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Time\Pacade</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

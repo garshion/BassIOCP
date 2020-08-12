@@ -227,6 +227,8 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
     <ClInclude Include="MathCommon.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MTQueue.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TimerImpl.hxx" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +246,8 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
     <ClCompile Include="StopWatch.cpp" />
     <ClCompile Include="StopWatchImpl.cpp" />
     <ClCompile Include="StringUtil.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TimerImpl.cpp" />
     <ClCompile Include="Vec3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
