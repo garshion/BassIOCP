@@ -31,6 +31,14 @@ bool Bass::CIOCP::SendPacket(Packet& data)
 	return m_pIOCP->SendPacket(data);
 }
 
+bool Bass::CIOCP::SendPacket(const SocketIndex_t& nIndex, Packet& data)
+{
+	if (nullptr == m_pIOCP)
+		return false;
+	data.nSenderIndex = nIndex;
+	return m_pIOCP->SendPacket(data);
+}
+
 bool Bass::CIOCP::SendPacketToClients(Packet& data, std::vector<SocketIndex_t>& clients)
 {
 	if (nullptr == m_pIOCP)

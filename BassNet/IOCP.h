@@ -19,6 +19,7 @@ namespace Bass
 
 		// 패킷 전송
 		bool SendPacket(Packet& data);													// 1클라 전송
+		bool SendPacket(const SocketIndex_t& nIndex, Packet& data);
 		bool SendPacketToClients(Packet& data, std::vector<SocketIndex_t>& clients);	// 다수클라 전송
 		bool SendPacketToAll(Packet& data);												// 전체 전송
 
