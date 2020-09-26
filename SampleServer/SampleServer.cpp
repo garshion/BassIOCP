@@ -5,6 +5,7 @@
 #include <SampleCommon.h>
 #include <thread>
 #include "UserManager.h"
+#include <StringUtil.h>
 
 
 SampleServer::SampleServer()
@@ -65,7 +66,7 @@ bool SampleServer::_PacketProcess(int nIndex, Bass::Packet& packet)
 		auto msg = packet.GetData<CSChatReq>();
 		SCChatRes res;
 		res.SetNickName(UserManager::GetInstance().GetUserNickName(nIndex));
-		res.SetChatMessage(res.ChatMessage);
+		res.SetChatMessage(msg->ChatMessage);
 
 		Bass::LogManager::GetInstance().Debug(L"%S : %S", res.NickName, res.ChatMessage);
 
@@ -86,13 +87,13 @@ void SampleServer::_OnConnect(int nIndex)
 {
 	std::string strIP = "";
 	m_ServerSocket.GetSessionIP(nIndex, strIP);
-	Bass::LogManager::GetInstance().Info(L"Socket(%d) Connected! [%s]", nIndex, strIP.c_str());
+	Bass::LogManager::GetInstance().Info(L"Socket(%d) Connected! [%S]", nIndex, strIP.c_str());
 }
 
 void SampleServer::_OnDisconnect(int nIndex)
 {
 	std::string strNick = UserManager::GetInstance().GetUserNickName(nIndex);
-	Bass::LogManager::GetInstance().Info(L"Socket(%d) User(%s) Disconnected.", nIndex, strNick.c_str());
+	Bass::LogManager::GetInstance().Info(L"Socket(%d) User(%S) Disconnected.", nIndex, strNick.c_str());
 	UserManager::GetInstance().RemoveUser(nIndex);
 }
 
