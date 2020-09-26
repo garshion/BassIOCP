@@ -115,7 +115,7 @@ bool Bass::ClientSocketImpl::_Worker()
 			{
 				int nUsedBytes = 0;
 
-				if (false == m_Resolver.Resolve(pBuffer, nRecvSize, nUsedBytes))
+				if (false == m_Resolver.Resolve(pBuffer + nTotalUsed, nRecvSize, nUsedBytes))
 					break;
 
 				nRecvSize -= nUsedBytes;
