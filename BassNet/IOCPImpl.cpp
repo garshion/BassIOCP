@@ -36,7 +36,10 @@ Bass::CIOCPSocket * Bass::CIOCPImpl::_GetFreeIOCPSocket()
 
 Bass::CIOCPSocket * Bass::CIOCPImpl::_GetIOCPSocket(SocketIndex_t socketIndex)
 {
-	if (m_vecSessionList.size() <= socketIndex)
+	if (socketIndex <= 0)
+		return nullptr;
+
+	if (m_vecSessionList.size() <= (size_t)socketIndex)
 		return nullptr;
 	return m_vecSessionList.at(socketIndex);
 }
