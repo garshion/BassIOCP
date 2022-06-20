@@ -5,9 +5,9 @@
 
 int main(void)
 {
-	Bass::LogManager::GetInstance().Start();
+	Bass::LogManager::Instance.Start();
 
-	Bass::LogManager::GetInstance().System(L"Sample Server Start!!");
+	Bass::LogManager::Instance.System(L"Sample Server Start!!");
 
 	SampleServer server;
 	server.Start();
@@ -18,6 +18,6 @@ int main(void)
 	}
 
 
-	Bass::LogManager::GetInstance().Stop();
+	Bass::LogManager::Instance.Stop();
 	return 0;
 }

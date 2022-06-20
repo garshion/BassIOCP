@@ -15,7 +15,7 @@ bool UserManager::AddUser(const int& nSocketIndex, const std::string& NickName)
 	using namespace Bass;
 	if (m_mapUserList.end() != m_mapUserList.find(nSocketIndex))
 	{
-		LogManager::GetInstance().Warning(L"Socket(%d) Already Added In UserManager", nSocketIndex);
+		LogManager::Instance.Warning(L"Socket(%d) Already Added In UserManager", nSocketIndex);
 		return false;
 	}
 

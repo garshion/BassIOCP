@@ -20,13 +20,13 @@ void SampleServer::Start()
 {
 	if (true == m_ServerSocket.Create(SAMPLE_SERVER_PORT))
 	{
-		Bass::LogManager::GetInstance().System(L"Server Socket Created Success. Listen Port [%d]", SAMPLE_SERVER_PORT);
+		Bass::LogManager::Instance.System(L"Server Socket Created Success. Listen Port [%d]", SAMPLE_SERVER_PORT);
 		std::thread thread(&SampleServer::_Run, this);
 		thread.detach();
 	}
 	else
 	{
-		Bass::LogManager::GetInstance().Error(L"Server Socket Created Failed!!");
+		Bass::LogManager::Instance.Error(L"Server Socket Created Failed!!");
 	}
 }
 
@@ -50,9 +50,9 @@ bool SampleServer::_PacketProcess(int nIndex, Bass::Packet& packet)
 	case EProtocol::CS_CONNECT_REQ:
 	{
 		auto msg = packet.GetData<CSConnectReq>();
-		if (true == UserManager::GetInstance().AddUser(packet.nSenderIndex, std::string(msg->NickName)))
+		if (true == UserManager::Instance.AddUser(packet.nSenderIndex, std::string(msg->NickName)))
 		{
-			Bass::LogManager::GetInstance().Info(L"Socket (%d) User (%S) Add Success!", packet.nSenderIndex, msg->NickName);
+			Bass::LogManager::Instance.Info(L"Socket (%d) User (%S) Add Success!", packet.nSenderIndex, msg->NickName);
 		}
 
 		SCConnectRes res;
@@ -65,18 +65,18 @@ bool SampleServer::_PacketProcess(int nIndex, Bass::Packet& packet)
 	{
 		auto msg = packet.GetData<CSChatReq>();
 		SCChatRes res;
-		res.SetNickName(UserManager::GetInstance().GetUserNickName(nIndex));
+		res.SetNickName(UserManager::Instance.GetUserNickName(nIndex));
 		res.SetChatMessage(msg->ChatMessage);
 
-		Bass::LogManager::GetInstance().Debug(L"%S : %S", res.NickName, res.ChatMessage);
+		Bass::LogManager::Instance.Debug(L"%S : %S", res.NickName, res.ChatMessage);
 
 		Bass::Packet ret((int)EProtocol::SC_CHAT_RES, &res);
-		m_ServerSocket.SendPacketToClients(ret, UserManager::GetInstance().GetConnectedList());
+		m_ServerSocket.SendPacketToClients(ret, UserManager::Instance.GetConnectedList());
 	}
 	break;
 
 	default:
-		Bass::LogManager::GetInstance().Warning(L"Inbalid Protocol Type!! Socket(%d) Protocol(%d)", nIndex, packet.GetProtocol());
+		Bass::LogManager::Instance.Warning(L"Inbalid Protocol Type!! Socket(%d) Protocol(%d)", nIndex, packet.GetProtocol());
 		return false;
 	}
 
@@ -87,14 +87,14 @@ void SampleServer::_OnConnect(int nIndex)
 {
 	std::string strIP = "";
 	m_ServerSocket.GetSessionIP(nIndex, strIP);
-	Bass::LogManager::GetInstance().Info(L"Socket(%d) Connected! [%S]", nIndex, strIP.c_str());
+	Bass::LogManager::Instance.Info(L"Socket(%d) Connected! [%S]", nIndex, strIP.c_str());
 }
 
 void SampleServer::_OnDisconnect(int nIndex)
 {
-	std::string strNick = UserManager::GetInstance().GetUserNickName(nIndex);
-	Bass::LogManager::GetInstance().Info(L"Socket(%d) User(%S) Disconnected.", nIndex, strNick.c_str());
-	UserManager::GetInstance().RemoveUser(nIndex);
+	std::string strNick = UserManager::Instance.GetUserNickName(nIndex);
+	Bass::LogManager::Instance.Info(L"Socket(%d) User(%S) Disconnected.", nIndex, strNick.c_str());
+	UserManager::Instance.RemoveUser(nIndex);
 }
 
 void SampleServer::_Run()
@@ -106,7 +106,7 @@ void SampleServer::_Run()
 
 	auto nextWaitTime = std::chrono::system_clock::now() + std::chrono::duration<double>(0);
 
-	Bass::LogManager::GetInstance().System(L"Server Main Loop Start");
+	Bass::LogManager::Instance.System(L"Server Main Loop Start");
 
 	while (m_bRunning)
 	{
@@ -128,7 +128,7 @@ void SampleServer::_Run()
 				_PacketProcess(packet.nSenderIndex, packet);
 				break;
 			default:
-				Bass::LogManager::GetInstance().Error(L"Invalid Notify Type!! (%d)", (int)packet.eNotify);
+				Bass::LogManager::Instance.Error(L"Invalid Notify Type!! (%d)", (int)packet.eNotify);
 				m_bRunning = false;
 				break;
 			}
@@ -137,6 +137,6 @@ void SampleServer::_Run()
 		std::this_thread::sleep_until(nextWaitTime);
 	}
 
-	Bass::LogManager::GetInstance().System(L"Server Main Loop End");
+	Bass::LogManager::Instance.System(L"Server Main Loop End");
 
 }

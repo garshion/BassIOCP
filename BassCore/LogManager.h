@@ -17,7 +17,7 @@ namespace Bass
 	{
 	public:
 		LogManager();
-		~LogManager();
+		virtual ~LogManager();
 
 		void SetPath(const std::wstring& strDir = DEFAULT_LOG_PATH, const std::wstring& strFileName = DEFAULT_LOG_FILENAME);
 		void SetLogPath(const std::wstring& strLogPath = DEFAULT_LOG_PATH);
