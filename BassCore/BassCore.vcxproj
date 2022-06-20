@@ -106,7 +106,10 @@
       <PreprocessorDefinitions>_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDIr)*.h" "$(SolutionDir)..\Lib\$(ProjectName)\Include\"
+      <Command>del  "$(SolutionDir)..\Lib\$(ProjectName)\Include\" /Q
+del "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\" /Q
+
+copy "$(ProjectDIr)*.h" "$(SolutionDir)..\Lib\$(ProjectName)\Include\"
 copy "$(OutDir)$(TargetFileName)" "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\"
 copy "$(OutDir)$(TargetName).pdb" "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\"</Command>
     </PostBuildEvent>
@@ -131,7 +134,10 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
       <PreprocessorDefinitions>_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDIr)*.h" "$(SolutionDir)..\Lib\$(ProjectName)\Include\"
+      <Command>del  "$(SolutionDir)..\Lib\$(ProjectName)\Include\" /Q
+del "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\" /Q
+
+copy "$(ProjectDIr)*.h" "$(SolutionDir)..\Lib\$(ProjectName)\Include\"
 copy "$(OutDir)$(TargetFileName)" "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\"
 copy "$(OutDir)$(TargetName).pdb" "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\"</Command>
     </PostBuildEvent>
@@ -162,7 +168,10 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDIr)*.h" "$(SolutionDir)..\Lib\$(ProjectName)\Include\"
+      <Command>del  "$(SolutionDir)..\Lib\$(ProjectName)\Include\" /Q
+del "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\" /Q
+
+copy "$(ProjectDIr)*.h" "$(SolutionDir)..\Lib\$(ProjectName)\Include\"
 copy "$(OutDir)$(TargetFileName)" "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\"
 </Command>
     </PostBuildEvent>
@@ -193,7 +202,10 @@ if not exist "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configurat
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDIr)*.h" "$(SolutionDir)..\Lib\$(ProjectName)\Include\"
+      <Command>del  "$(SolutionDir)..\Lib\$(ProjectName)\Include\" /Q
+del "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\" /Q
+
+copy "$(ProjectDIr)*.h" "$(SolutionDir)..\Lib\$(ProjectName)\Include\"
 copy "$(OutDir)$(TargetFileName)" "$(SolutionDir)..\Lib\$(ProjectName)\$(PlatformTarget)\$(Configuration)\"
 </Command>
     </PostBuildEvent>
