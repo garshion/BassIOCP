@@ -10,11 +10,12 @@ void Bass::CIOCPImpl::_CreateSession()
 	if (m_nMaxSessionCount == 0)
 		return;
 
-	for (SocketIndex_t i = 0; i < (SocketIndex_t)m_nMaxSessionCount; ++i)
+	for (SocketIndex_t i = 1; i <= (SocketIndex_t)m_nMaxSessionCount; ++i)
 	{
 		auto pSession = new CIOCPSocket(i);
 		pSession->SetIOCP(this);
 		m_vecSessionList.push_back(pSession);
+		m_mapSessionList.insert(std::make_pair(i, pSession));
 		m_queueSocketIndex.Push(i);
 	}
 }
@@ -39,9 +40,11 @@ Bass::CIOCPSocket * Bass::CIOCPImpl::_GetIOCPSocket(SocketIndex_t socketIndex)
 	if (socketIndex <= 0)
 		return nullptr;
 
-	if (m_vecSessionList.size() <= (size_t)socketIndex)
+	auto it = m_mapSessionList.find(socketIndex);
+	if (it == m_mapSessionList.end())
 		return nullptr;
-	return m_vecSessionList.at(socketIndex);
+
+	return it->second;
 }
 
 void Bass::CIOCPImpl::_Release()

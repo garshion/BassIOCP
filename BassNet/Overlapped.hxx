@@ -1,7 +1,19 @@
 #pragma once
 #include "NetworkCommon.h"
 
-#define SafeDeleteOverlapped(x) { if(nullptr != x && x->Type() == Bass::EOverlappedType::OVERLAPPED_TYPE_DYNAMIC) { delete x; x = nullptr;} }
+#define SafeDeleteOverlapped(x) {											\
+	if (nullptr != x) {														\
+		if (x->Type() == Bass::EOverlappedType::OVERLAPPED_TYPE_DYNAMIC) 	\
+		{ 																	\
+			delete x; 														\
+			x = nullptr; 													\
+		}																	\
+		else 																\
+		{ 																	\
+			x->Reset(); 													\
+		}																	\
+	}																		\
+}																			
 
 namespace Bass
 {

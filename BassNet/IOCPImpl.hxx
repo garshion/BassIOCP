@@ -2,6 +2,7 @@
 #include "NetworkCommon.h"
 #include <vector>
 #include <unordered_set>
+#include <unordered_map>
 #include <atomic>
 
 #include "MTQueue.h"
@@ -62,6 +63,7 @@ namespace Bass
 		int m_nListenPort = 0;
 
 		std::vector<CIOCPSocket*> m_vecSessionList;
+		std::unordered_map<int, CIOCPSocket*> m_mapSessionList;
 
 		size_t m_nMaxSessionCount = DEFAULT_SESSION_COUNT;
 
