@@ -63,7 +63,7 @@ int main(void)
 
 	if (true == so.IsConnected())
 	{
-		std::cout << "Server Connectd !!" << std::endl;
+		std::cout << "Server Connected !!" << std::endl;
 		CSConnectReq req;
 		req.SetNickName(strNick);
 		Bass::Packet packet((int)EProtocol::CS_CONNECT_REQ, &req);
@@ -83,10 +83,13 @@ int main(void)
 		//std::cout << "Chat >> ";
 		std::cin >> strBuffer;
 
-		CSChatReq req;
-		req.SetChatMessage(strBuffer);
-		Bass::Packet packet((int)EProtocol::CS_CHAT_REQ, &req);
-		so.SendPacket(packet);
+		if (false == strBuffer.empty())
+		{
+			CSChatReq req;
+			req.SetChatMessage(strBuffer);
+			Bass::Packet packet((int)EProtocol::CS_CHAT_REQ, &req);
+			so.SendPacket(packet);
+		}
 	}
 
 	std::cout << "Server Disconnected" << std::endl;
