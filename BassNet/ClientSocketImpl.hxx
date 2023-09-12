@@ -41,6 +41,8 @@ namespace Bass
 
 		std::vector<Packet> m_vecPackets;
 		PacketResolver m_Resolver;
+
+		std::mutex m_PacketLock;
 	};
 
 }

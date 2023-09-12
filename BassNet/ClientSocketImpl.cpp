@@ -51,6 +51,7 @@ bool Bass::ClientSocketImpl::Reconnect()
 
 void Bass::ClientSocketImpl::GetReceivedPacketList(std::vector<Packet>& o_packetList)
 {
+	AutoLock(m_PacketLock);
 	o_packetList.swap(m_vecPackets);
 }
 
@@ -123,6 +124,7 @@ bool Bass::ClientSocketImpl::_Worker()
 
 				if (true == m_Resolver.IsCompleted())
 				{
+					AutoLock(m_PacketLock);
 					m_vecPackets.push_back(m_Resolver.GetReceivedPacket());
 				}
 			}
