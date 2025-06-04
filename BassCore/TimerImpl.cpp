@@ -1,6 +1,7 @@
 #include "TimerImpl.hxx"
 #include <thread>
 #include "BassCommon.h"
+#include <chrono>
 
 Bass::TimerData::TimerData()
 { 
